@@ -1313,7 +1313,7 @@ ia64-*-hpux*)
   ;;
 
 x86_64-*kfreebsd*-gnu|x86_64-*linux*|ppc*-*linux*|powerpc*-*linux*| \
-s390*-*linux*|s390*-*tpf*|sparc*-*linux*|aarch64-*linux*)
+s390*-*linux*|s390*-*tpf*|sparc*-*linux*)
   # Find out which ABI we are using.
   echo 'int i;' > conftest.$ac_ext
   if AC_TRY_EVAL(ac_compile); then
@@ -1329,18 +1329,12 @@ s390*-*linux*|s390*-*tpf*|sparc*-*linux*|aarch64-*linux*)
 	  ppc64-*linux*|powerpc64-*linux*)
 	    LD="${LD-ld} -m elf32ppclinux"
 	    ;;
-          ppc64le-*linux*|powerpc64le-*linux*)
-            LD="${LD-ld} -m elf32lppclinux"
-            ;;
 	  s390x-*linux*)
 	    LD="${LD-ld} -m elf_s390"
 	    ;;
 	  sparc64-*linux*)
 	    LD="${LD-ld} -m elf32_sparc"
 	    ;;
-          aarch64-*linux*)
-            LD="${LD-ld} -m aarch64elf"
-            ;;
 	esac
 	;;
       *64-bit*)
@@ -1351,21 +1345,15 @@ s390*-*linux*|s390*-*tpf*|sparc*-*linux*|aarch64-*linux*)
 	  x86_64-*linux*)
 	    LD="${LD-ld} -m elf_x86_64"
 	    ;;
-	  ppc64-*linux*|powerpc64-*linux*)
+	  ppc*-*linux*|powerpc*-*linux*)
 	    LD="${LD-ld} -m elf64ppc"
 	    ;;
-          ppc64le-*linux*|powerpc64le-*linux*)
-            LD="${LD-ld} -m elf64lppc"
-            ;;
 	  s390*-*linux*|s390*-*tpf*)
 	    LD="${LD-ld} -m elf64_s390"
 	    ;;
 	  sparc*-*linux*)
 	    LD="${LD-ld} -m elf64_sparc"
 	    ;;
-          aarch64-*linux*)
-            LD="${LD-ld} -m aarch64elf"
-            ;;
 	esac
 	;;
     esac

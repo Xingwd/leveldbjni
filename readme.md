@@ -10,42 +10,19 @@ that provides an ordered mapping from string keys to string values..
 # Getting the JAR
 
 Just add the following jar to your java project:
-[leveldbjni-all-1.8.jar](http://repo2.maven.org/maven2/org/fusesource/leveldbjni/leveldbjni-all/1.8/leveldbjni-all-1.8.jar)
+[leveldbjni-all-1.7.jar](http://repo2.maven.org/maven2/org/fusesource/leveldbjni/leveldbjni-all/1.7/leveldbjni-all-1.7.jar)
 
 ## Using as a Maven Dependency
 
-You just need to add the following dependency to your Maven POM:
+You just nee to add the following dependency to your Maven pom.
 
     <dependencies>
       <dependency>
         <groupId>org.fusesource.leveldbjni</groupId>
         <artifactId>leveldbjni-all</artifactId>
-        <version>1.8</version>
+        <version>1.7</version>
       </dependency>
     </dependencies>
-
-By using the `leveldbjni-all` dependency, you get the OS specific native drivers for all supported platforms.
-
-If you want to use only one or some but not all native drivers, then directly use the OS specific dependency instead of `leveldbjni-all`. For example to use Linux 64 bit, use this dependency:
-
-    <dependencies>
-      <dependency>
-        <groupId>org.fusesource.leveldbjni</groupId>
-        <artifactId>leveldbjni-linux64</artifactId>
-        <version>1.8</version>
-      </dependency>
-    </dependencies>
-
-If you have the leveljni native driver DLL/SO library already separately installed e.g. by a package manager (see [issue 90](https://github.com/fusesource/leveldbjni/issues/90)), then you could depend on the Java "launcher" without the JAR containing the OS specific native driver like this:
-
-      <dependency>
-        <groupId>org.fusesource.leveldbjni</groupId>
-        <artifactId>leveldbjni</artifactId>
-        <version>1.8</version>
-      </dependency>
-
-Lastly, another project unrelated to this project separately provides a (less mature) pure Java implementation of LevelDB, see [dain/leveldb](https://github.com/dain/leveldb).  Note that both that and this project share the same Maven artefact for the Level DB API interface (org.iq80.leveldb:leveldb-api).
-
 
 ## API Usage:
 
@@ -192,8 +169,6 @@ Using a memory pool to make native memory allocations more efficient:
     
 ## Building
 
-See also [releasing.md](releasing.md):
-
 ### Prerequisites 
 
 * GNU compiler toolchain
@@ -206,7 +181,7 @@ The following worked for me on:
  * OS X Lion with X Code 4
  * CentOS 5.6 (32 and 64 bit)
  * Ubuntu 12.04 (32 and 64 bit)
- * apt-get install autoconf libtool
+    * apt-get install autoconf libtool
 
 ### Build Procedure
 
@@ -224,15 +199,15 @@ Then download the snappy, leveldb, and leveldbjni project source code:
     export SNAPPY_HOME=$(cygpath -w `cd snappy-1.0.5; pwd`)
     export LEVELDB_HOME=$(cygpath -w `cd leveldb; pwd`)
     export LEVELDBJNI_HOME=$(cygpath -w `cd leveldbjni; pwd`)
--->
+-->  
 
-Compile the snappy project.  This produces a static library.
+Compile the snappy project.  This produces a static library.    
 
     cd ${SNAPPY_HOME}
     ./configure --disable-shared --with-pic
     make
     
-Patch and Compile the leveldb project.  This produces a static library. 
+Patch and Compile the leveldb project.  This produces a static library.    
     
     cd ${LEVELDB_HOME}
     export LIBRARY_PATH=${SNAPPY_HOME}
@@ -241,7 +216,7 @@ Patch and Compile the leveldb project.  This produces a static library.
     git apply ../leveldbjni/leveldb.patch
     make libleveldb.a
 
-Now use maven to build the leveldbjni project. 
+Now use maven to build the leveldbjni project.    
     
     cd ${LEVELDBJNI_HOME}
     mvn clean install -P download -P ${platform}
@@ -253,14 +228,13 @@ Replace ${platform} with one of the following platform identifiers (depending on
 * linux64
 * win32
 * win64
-* freebsd64
 
 If your platform does not have the right auto-tools levels available
 just copy the `leveldbjni-${version}-SNAPSHOT-native-src.zip` artifact
 from a platform the does have the tools available then add the
 following argument to your maven build:
 
-    -Dnative-src-url=file:leveldbjni-${verision}-SNAPSHOT-native-src.zip
+   -Dnative-src-url=file:leveldbjni-${verision}-SNAPSHOT-native-src.zip
 
 ### Build Results
 

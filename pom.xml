@@ -41,7 +41,7 @@
 
   <groupId>org.fusesource.leveldbjni</groupId>
   <artifactId>leveldbjni-project</artifactId>
-  <version>99-master-SNAPSHOT</version>
+  <version>1.8</version>
   <packaging>pom</packaging>
   
   <name>${project.artifactId}</name>
@@ -51,7 +51,7 @@
     <forge-project-id>leveldbjni</forge-project-id>
     <forge-project-id-uc>LEVELDBJNI</forge-project-id-uc>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <hawtjni-version>1.11</hawtjni-version>
+    <hawtjni-version>1.9</hawtjni-version>
     <leveldb-api-version>0.6</leveldb-api-version>
   </properties>
   
@@ -246,13 +246,8 @@
         <module>leveldbjni-osx</module>
         <module>leveldbjni-linux32</module>
         <module>leveldbjni-linux64</module>
-        <module>leveldbjni-freebsd64</module>
         <module>leveldbjni-win32</module>
         <module>leveldbjni-win64</module>
-        <module>leveldbjni-sunos64-amd64</module>
-        <module>leveldbjni-sunos64-sparcv9</module>
-        <module>leveldbjni-linux64-ppc64le</module>
-        <module>leveldbjni-linux64-aarch64</module>
         <module>leveldbjni-all</module>
       </modules>
     </profile>    
@@ -285,13 +280,6 @@
     </profile>
 
     <profile>
-      <id>freebsd64</id>
-      <modules>
-        <module>leveldbjni-freebsd64</module>
-      </modules>
-    </profile>
-
-    <profile>
       <id>win32</id>
       <properties>
         <skipAutogen>true</skipAutogen>
@@ -310,34 +298,6 @@
         <module>leveldbjni-win64</module>
       </modules>
     </profile>
-
-    <profile>
-      <id>sunos64-amd64</id>
-      <modules>
-        <module>leveldbjni-sunos64-amd64</module>
-      </modules>
-    </profile>
-
-    <profile>
-      <id>sunos64-sparcv9</id>
-      <modules>
-        <module>leveldbjni-sunos64-sparcv9</module>
-      </modules>
-    </profile>
-
-    <profile>
-      <id>linux64-ppc64le</id>
-      <modules>
-        <module>leveldbjni-linux64-ppc64le</module>
-      </modules>
-    </profile>
-    <profile>
-      <id>linux64-aarch64</id>
-      <modules>
-        <module>leveldbjni-linux64-aarch64</module>
-      </modules>
-    </profile>
-
 
   </profiles>
 </project>

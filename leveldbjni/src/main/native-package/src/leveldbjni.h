@@ -58,9 +58,7 @@
   #include <string.h>
 #endif
 
-#if defined(__sun)
-  #include <errno.h>
-#elif defined(HAVE_SYS_ERRNO_H)
+#ifdef HAVE_SYS_ERRNO_H
   #include <sys/errno.h>
 #endif
 
